@@ -5,7 +5,10 @@ Such a business case is meant for people who are willing to invest in a new luxu
 
 ## § Introduction/Business Problem
 
-Rome is a worldwide recognized cultural center. Thanks to its many beauties, many luxury restaurants are there located.  
+Rome is a worldwide recognized cultural center, and many luxury restaurants are there located. An investor might then be interested in funding an already exiting restaurant, or he could even open one by his own.  
+It is then important to know which is the optimal neighborhood in Rome where to find/open a luxury restaurant to invest in.
+
+
 The problem we are going to tackle is the following:
 
 > _where to open a new luxury restaurant in Rome?_
