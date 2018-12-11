@@ -37,6 +37,8 @@ In particular, we will make use of the following tables from the official databa
 - `income_by_municipio_2015.xls`, containing the PCI by borough as of December 2015;
 - `Tab_3_ZUrb_T1_17.xlsx`, containing the demographic dataset of all the neighborhoods of Rome as of December 2017.
 
+The rows of the first table represent the boroughs of Rome, whereas the columns contain the PCI per year divided into three categories: total, Italian, foreign.  We should exploit such data by selecting the "total" column of the year 2015.
+
 As for Foursquare, we will mainly make use of two GET methods:  
 `https://api.foursquare.com/v2/venues/explore` and `https://api.foursquare.com/v2/venues/search`.  
 The former will be called for any of the following arguments of the parameter `section`:
