@@ -37,7 +37,7 @@ In particular, we will make use of the following tables from the official databa
 - `income_by_municipio_2015.xls`, containing the PCI by borough as of December 2015;
 - `Tab_3_ZUrb_T1_17.xlsx`, containing the demographic dataset of all the neighborhoods of Rome as of December 2017.
 
-The rows of the first table represent the boroughs of Rome, whereas the columns contain the PCI per year divided into three categories: total, Italian, foreign.  We should exploit such data by selecting the "total" column of the year 2015.
+The rows of the first table represent the boroughs of Rome, whereas the columns contain the PCI per year divided into three categories: total, Italian, foreign.  We should exploit such data by selecting the "total" column of the year 2015. As for the second one, it is a way more complicated table. It contains info about the number of married/unmarried people, singles, etc etc per each neighborhood and class of age. For the porpouses of this assignment, we will mainly interested in the total number of people living in each neighborhood, no matter of the marital status.
 
 As for Foursquare, we will mainly make use of two GET methods:  
 `https://api.foursquare.com/v2/venues/explore` and `https://api.foursquare.com/v2/venues/search`.  
