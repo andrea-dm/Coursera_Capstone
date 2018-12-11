@@ -34,8 +34,8 @@ The data there we are going to exploit in order to provide a solution are the fo
 - [Foursquare](https://www.foursquare.com/): to get a list of venues located within each neighborhood.
 
 In particular, we will make use of the following tables from the official database of the Municipality of Rome:
-- `income_by_municipio_2015.xls`, containing the PCI by borough;
-- `Tab_3_ZUrb_T1_17.xlsx`, containing the demographic dataset of all the neighborhoods of Rome.
+- `income_by_municipio_2015.xls`, containing the PCI by borough as of December 2015;
+- `Tab_3_ZUrb_T1_17.xlsx`, containing the demographic dataset of all the neighborhoods of Rome as of December 2017.
 
 As for Foursquare, we will mainly make use of two GET methods:  
 `https://api.foursquare.com/v2/venues/explore` and `https://api.foursquare.com/v2/venues/search`.  
