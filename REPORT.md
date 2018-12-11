@@ -9,7 +9,7 @@ Rome is a worldwide recognized cultural center, and many luxury restaurants are 
 It is then important to know which is the optimal neighborhood in Rome where to find/open a luxury restaurant to invest in.
 
 
-The problem we are going to tackle is the following:
+Hence, we are going to tackle the following problem:
 
 > _where to open a new luxury restaurant in Rome?_
 
