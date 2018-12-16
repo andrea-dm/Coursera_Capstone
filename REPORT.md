@@ -80,4 +80,4 @@ To do so, we run the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, 
 
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
 
-Finally, analyse the core cluster.
+Finally, we analyze the core cluster.
