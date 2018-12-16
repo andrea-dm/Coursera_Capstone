@@ -65,7 +65,8 @@ The aforementioned data will be then merged into two `pandas` DataFrame, the fir
 
 
 At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes. Now is time to start the wrangling process!  
-First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.
+First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.  
+
 ![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
 
 Next, we consider all the neighborhoods within the boroughs resulting from the previous selection. In particulat, we are restricting ourselves to those "Zone" that are located within the GRA Junction.
