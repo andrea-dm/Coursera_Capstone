@@ -3,11 +3,12 @@
 
 Such a business case is meant for people who are willing to invest in a new luxury restaurant in Rome.
 
+
 ## § Introduction/Business Problem
 
-Rome is a worldwide recognized cultural center, and many luxury restaurants are there located. An investor might then be interested in funding an already exiting restaurant, or he could even open one by his own.  
-It is then important to know which is the optimal neighborhood in Rome where to find/open a luxury restaurant to invest in.
 
+Rome is a worldwide recognized cultural center, and one can find many luxury restaurants there. An investor might then be interested in funding an already exiting restaurant, or he could even open one by his own.  
+It is then important to know which is the optimal neighborhood in Rome where to find/open a luxury restaurant to invest in.
 
 Hence, we are going to tackle the following problem:
 
@@ -19,8 +20,9 @@ We will address such a business case by discussing the following main drivers:
 - transportation.
 
 Since we are interested in investing in a luxury restaurant, we first restrict ourselves to just those "Municipi" that stand out for PCI, that is the per-capita income. Within such boroughs, we consider only neighborhoods having a population density higher than a certain predefined treeshold.  
-The resulting "Zone" are then collected into clusters via some Machine Learning algorithm. Such clusters are built on top of a large dataframe containing the venues retrieved via the Foursquare API for each neighborhood. A filter is subsequently applied to select the more suitable cluster.  
-Finally, an analysis of the transportation system is performed in order to determine the _best_ "Zona": this is the neighborhood that we will eventually propose to the investor.
+
+The bunch of "Zone" resulting from the previous wrangling process is then cleaned out of noise via some clustering algorithm, which is applied to a dataframe containing the venues retrieved via the Foursquare API. A filter is subsequently applied to select the more suitable set of neighborhoods.  
+Finally, an analysis of the transportation system is performed in order to determine the optimal "Zona": this is the neighborhood that we will eventually suggest to the investor.
 
 
 ## § Data
@@ -45,6 +47,7 @@ The former will be called for any of the following arguments of the parameter `s
 - 'food';
 - 'drinks';
 - 'coffee';
+- 'shops';
 - 'sights';
 - 'arts';
 - 'outdoors';
@@ -56,3 +59,13 @@ in order to download all the checked-in venues nearby the selected neighborhoods
 - 'Parking'.
 
 The aforementioned data will be then merged into two `pandas` DataFrame, the first one listing geographical\demographic info about each neighborhood and the second one grouping all the retrieved venues from Foursquare. 
+
+
+## § Methodology
+
+
+At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes. Now is time to start the wrangling process!  
+First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.
+![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
+
+Next, we consider all the neighborhoods within the boroughs resulting from the previous selection. In particulat, we are restricting ourselves to those "Zone" that are located within the GRA Junction.
