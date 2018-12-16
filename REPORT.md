@@ -65,8 +65,19 @@ The aforementioned data will be then merged into two `pandas` DataFrame, the fir
 
 
 At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes. Now is time to start the wrangling process!  
-First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.  
-
+First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.
 ![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
 
-Next, we consider all the neighborhoods within the boroughs resulting from the previous selection. In particulat, we are restricting ourselves to those "Zone" that are located within the GRA Junction.
+Next, we consider all the neighborhoods within the boroughs resulting from the previous selection. In particulat, we are restricting ourselves to those "Zone" that are located within the GRA Junction.  
+Furthermore, an analysis of population density by neighborhood yields the list of candidate "Zone", which are represented in the following map.
+
+![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_density.jpg)  
+
+The threshold value chosen to filter the neighborhoods out is 1000 inhabitants per km2.  
+
+We are ready to clean out the noise!  
+To do so, we run the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` on the one-hot encoded dataframe of all the venues retrieved via the Foursquare API.  
+
+![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
+
+Finally, analyse the core cluster.
