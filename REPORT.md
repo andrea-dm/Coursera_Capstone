@@ -93,3 +93,7 @@ Next, we count restaurants in each "Zona" and compute the density. The interquar
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
 
+Final step: transportation system. At this stage, data about bus stops, metro stations, tram stations and parking are retrieved via the Foursquare API. Then, a weight has been assigned to each category, based on the results of a certain investigation that has been earlier conducted, as well as on client's preferences. 
+The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed. 
+
+![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)
