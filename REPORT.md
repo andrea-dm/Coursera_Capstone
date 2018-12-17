@@ -64,7 +64,7 @@ The aforementioned data will be then merged into two `pandas` DataFrame, the fir
 ## § Methodology
 
 
-At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes. Now is time to start the wrangling process!  
+At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes. Now is time to start the wrangling process.  
 First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.
 ![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
 
@@ -75,7 +75,7 @@ Furthermore, an analysis of population density by neighborhood yields the list o
 
 The threshold value chosen to filter the neighborhoods out is 1000 inhabitants per km2.  
 
-We are ready to clean out the noise!  
+We are ready to clean out the noise.  
 To do so, we run the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` on the one-hot encoded dataframe of all the venues retrieved via the Foursquare API.  
 
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
@@ -85,8 +85,11 @@ The analysis is based on the following two considerations:
 - Opera Houses, Concert Halls and Theaters are generally attended by somewhat aristocratic/wealthy people;
 - it is a generally accepted principle that a new business must be located as close to its competitors as it can be.  
 
+So, we first select neighborhoods where at least one theater is located.
+
 ![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg)  
+
+Next, we count restaurants in each "Zona" and compute the density. The interquartile range is calculated for later use.
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
 
-Furthermore, 
