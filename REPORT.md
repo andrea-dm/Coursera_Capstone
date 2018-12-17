@@ -80,4 +80,13 @@ To do so, we run the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, 
 
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
 
-Finally, we analyze the core cluster.
+Finally, we inspect the core cluster.  
+The analysis is based on the following two considerations:
+- Opera Houses, Concert Halls and Theaters are generally attended by somewhat aristocratic/wealthy people;
+- it is a generally accepted principle that a new business must be located as close to its competitors as it can be.  
+
+![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg)  
+
+![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
+
+Furthermore, 
