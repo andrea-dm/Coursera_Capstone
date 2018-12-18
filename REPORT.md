@@ -1,7 +1,8 @@
 
 # Luxury restaurants in Rome
 
-Such a business case is meant for people who are willing to invest in a new luxury restaurant in Rome.
+Such a business case is meant for people who are willing to invest in a new luxury restaurant in Rome.  
+We recall that "Municipio" is the Italian for borough, and "Zona" is the Italian of "neighborhood".
 
 
 ## § Introduction/Business Problem
@@ -22,7 +23,7 @@ We will address such a business case by discussing the following main drivers:
 Since we are interested in investing in a luxury restaurant, we first restrict ourselves to just those "Municipi" that stand out for PCI, that is the per-capita income. Within such boroughs, we consider only neighborhoods having a population density higher than a certain predefined treeshold.  
 
 The bunch of "Zone" resulting from the previous wrangling process is then cleaned out of noise via some clustering algorithm, which is applied to a dataframe containing the venues retrieved via the Foursquare API. A filter is subsequently applied to select the more suitable set of neighborhoods.  
-Finally, an analysis of the transportation system is performed in order to determine the optimal "Zona": this is the neighborhood that we will eventually suggest to the investor.
+Finally, an analysis of the transportation system is performed in order to determine the optimal "Zona": this is the neighborhood that we will eventually suggest to the investor.  
 
 
 ## § Data
@@ -30,10 +31,10 @@ Finally, an analysis of the transportation system is performed in order to deter
 
 The data there we are going to exploit in order to provide a solution are the following:
 - `Municipi_Roma_15_wgs84_1.shp`: the shapefile containing geographical infos about the boroughs of Rome;
-- [Wikipedia](https://it.wikipedia.org/wiki/Municipi_di_Roma): to get boroughs names and their area in km2;
-- the [official database](https://www.comune.roma.it/web/it/analisi-statistiche.page) of statistics of the Municipality of Rome;
+- _Wikipedia_: to get boroughs names and their area in km2;
+- the official database _"Analisi e dati statistici"_ of the Municipality of Rome;
 - `ZU_COD.shp`: the shapefile containing geographical descriptions of the neighborhoods in Rome; 
-- [Foursquare](https://www.foursquare.com/): to get a list of venues located within each neighborhood.
+- _Foursquare_: to get a list of venues located within each neighborhood.
 
 In particular, we will make use of the following tables from the official database of the Municipality of Rome:
 - `income_by_municipio_2015.xls`, containing the PCI by borough as of December 2015 ([here](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/income_by_municipio_2015.xls));
@@ -59,7 +60,7 @@ in order to download all the checked-in venues nearby the selected neighborhoods
 - 'Parking'.
 
 The aforementioned data will be then merged into two `pandas` DataFrame, the first one listing geographical\demographic info about each neighborhood and the second one grouping all the retrieved venues from Foursquare.  
-At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes.
+At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes.  
 
 
 ## § Methodology
@@ -72,7 +73,6 @@ A this stage, a clustering algorithm has been considered in order to get rid of 
 The cleaned dataset has been further filtered out by excluding the neighborhoods where at no Opera Houses, Concert Halls and Theaters are located. In fact, such venues are generally attended by somewhat aristocratic/wealthy people, who are precisely the primary target.  
 Next, the number of restaurants is counted for each neighborhood, non-Italian cuisine ignored.  
 Finally, data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and the only the "Zone" where such infrastructures are located have been selected. Moreover, a weight has been assigned to each category of those. Based upon the impact on the transportation system that traffic jams usually have in Rome, the weight of metro and tram stations has been chosen to be heavier than both bus stops and parking. Further characteristics have been taken into consideration in the weights assignment such as the speed of the vehicles.  
-
 
 
 ## § Results
@@ -100,7 +100,7 @@ Then Restaurants in each "Zona" have been counted, and their density computed. T
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)   
 
-As a matter of fact, it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage the marketing of the other businesses and increase competitiveness ([here](https://www.entrepreneur.com/article/73784) a reference). Hence, it is crucial to pick a neighborhoods where it is more likely to count the expected number of restaurants.  
+As a matter of fact, it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage the marketing of the other businesses and increase competitiveness (check the article by Karen Spaeder in the "References" section). Hence, it is crucial to pick a neighborhoods where it is more likely to count the expected number of restaurants.  
 
 Finally, the weighted average of distances of TPL from the centroids of the neighborhoods is computed.  
 The chart below describes the relevant data about the transportation system.  
@@ -122,13 +122,27 @@ In order to infer the optimal neighborhood, only the columns `Restaurants per km
 The following guidelines will yield the optimal choice:
 - the density of restaurants per km2 should be in the interquartile range;
 - the density of TPL per km2 should be above the median;
-- the average distance from TPL should be as shortest as possible.
+- the average distance from TPL should be as short as possible.
 
 If the first of the above guidelines addresses the question of being as close to the competitors as possible, the second of them hints at the candidate neighborhood as a node of the transportation network, based on the assumption that the more connected it is, the better. The last guideline is meant to locate the new restaurant next to any TPL.  
 
-We will eventually deduce that the optimal neighborhood is "Zona Prati".
+Finally, a couple of remarks.  
+The analysis that we have conducted is very far from being complete and exhaustive. For instance, the limitations of the Foursquare API had the negative conseguence of restricting the number of venues that we could fetch.  
+Moreover, the information about population and income are not updated, hence they are susceptible to changes that can affect the results. As an example, data about PCI are dated 2015. 
+One can clearly overcome such obstacles by appealing to other API and by looking at other economic/financial data. We defer similar investigations for they would go beyond the scope of such analysis.  
 
 
 ## § Conclusion
 
+The result of the above analysis is clear: the optimal neighborhood is "Zona Prati".  
+Even if the data we got have been proved to be somewhat limited, the methods and the techniques applied mathematical-based, hence solid. This makes the result valid and reliable.
 
+
+## § References
+
+
+- *Municipality of Rome*, **Sistema Informativo Geografico**. URL: [websit.cittametropolitanaroma.gov.it](http://websit.cittametropolitanaroma.gov.it/Download.aspx).
+- *Wikipedia*, **Municipi di Roma**. URL: [it.wikipedia.org/wiki/Municipi_di_Roma](https://it.wikipedia.org/wiki/Municipi_di_Roma).
+- *Municipality of Rome*, **Analisi e dati statistici**. From the database "Dati e statistiche". URL: [www.comune.roma.it/web/it/analisi-statistiche.page](https://www.comune.roma.it/web/it/analisi-statistiche.page).
+- *Foursquare*, **Documentation**. URL: [developer.foursquare.com/docs](https://developer.foursquare.com/docs).
+- *Karen E. Spaeder*, **How to Find the Best Location**. In: Entrepreneur Europe. URL: [www.entrepreneur.com/article/73784](https://www.entrepreneur.com/article/73784).
