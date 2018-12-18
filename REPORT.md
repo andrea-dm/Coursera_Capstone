@@ -2,7 +2,7 @@
 # Luxury restaurants in Rome
 
 Such a business case is meant for people who are willing to invest in a new luxury restaurant in Rome.  
-We recall that "Municipio" is the Italian for borough, and "Zona" is the Italian of "neighborhood".
+We recall that "Municipio" is the Italian for borough, and "Zona" is the Italian for "neighborhood".
 
 
 ## § Introduction/Business Problem
