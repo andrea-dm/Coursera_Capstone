@@ -112,4 +112,9 @@ The weighted average of distances of TPL from the centroids of the neighborhoods
 
 The following table is the result of the above wrangling process:  
 
-![Candidate Neighborhoods](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/candidate_neighborhoods.jpg) 
+![Candidate Neighborhoods](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/candidate_neighborhoods.jpg)  
+
+In order to infer the optimal neighborhood, only the columns `Restaurants per km2`, `TPL per km2` and `Average Distance` have been examined. In particular, they have been cut in quartiles.  
+
+![Quartiles](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/candidate_quartiles.jpg)  
+
