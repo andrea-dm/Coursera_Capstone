@@ -65,12 +65,12 @@ At this point, we are completely aware of the intentions of our client, and the 
 ## § Methodology
 
 
-**Step 1**
+**Step 1 -**  
 We have selected only the boroughs of Rome where the Per-Capita Income (PCI) was above a fixed threshold, which has been previously set to 27,500€ per year. The following map shows the "Municipi" by PCI.  
 
 ![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
 
-**Step 2**
+**Step 2 -**  
 We have dropped all the neighborhoods within those boroughs excluded by the previous selection. In particulat, we have restricted ourselves to just the "Zone" that are located within the GRA Junction.  
 Next, an analysis of population density by neighborhood has yielded the list of candidate "Zone", which has been plotted in the following map.  
 
@@ -78,7 +78,7 @@ Next, an analysis of population density by neighborhood has yielded the list of 
 
 The threshold value chosen to filter the neighborhoods out was one thousand inhabitants per km2.  
 
-**Step 3**
+**Step 3 -**  
 The resulting data has been cleaned of noise via the DBSCAN algorithm, which has been applied with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` on the one-hot encoded dataframe of all the venues previously retrieved from Foursquare.  
 
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
@@ -88,18 +88,18 @@ The analysis was based on the following two considerations:
 - Opera Houses, Concert Halls and Theaters are generally attended by somewhat aristocratic/wealthy people;
 - it is a generally accepted principle that a new business must be located as close to its competitors as it can be.  
 
-**Step 4**
+**Step -**  
 The neighborhoods where at least one theater is located have been selected.  
 
 ![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg)  
 
-**Step 5** 
+**Step -**  
 Restaurants in each "Zona" have been counted, and their density computed.  
 The interquartile range has been also calculated for later use.  
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
 
-**Step 6** 
+**Step -**  
 Data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and a weight has been assigned to each category, based on the results of a certain investigation that has been earlier conducted, as well as on client's preferences.  
 The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed.  
 
