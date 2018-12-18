@@ -30,7 +30,7 @@ Finally, an analysis of the transportation system is performed in order to deter
 
 
 The data there we are going to exploit in order to provide a solution are the following:
-- `Municipi_Roma_15_wgs84_1.shp`: the shapefile containing geographical infos about the boroughs of Rome;
+- `Municipi_Roma_15_wgs84_1.shp`: the shapefile containing geographical info about the boroughs of Rome;
 - _Wikipedia_: to get boroughs names and their area in km2;
 - the official database _"Analisi e dati statistici"_ of the Municipality of Rome;
 - `ZU_COD.shp`: the shapefile containing geographical descriptions of the neighborhoods in Rome; 
@@ -40,7 +40,7 @@ In particular, we will make use of the following tables from the official databa
 - `income_by_municipio_2015.xls`, containing the PCI by borough as of December 2015 ([here](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/income_by_municipio_2015.xls));
 - `Tab_3_ZUrb_T1_17.xlsx`, containing the demographics of all the neighborhoods of Rome as of December 2017 ([here](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/Tab_3_ZUrb_T1_17.xlsx)).
 
-The rows of the first table represent the boroughs of Rome, whereas the columns contain the PCI per year divided into three categories: total, Italian, foreign.  We should exploit such data by selecting the "total" column of the year 2015. As for the second one, it is a way more complicated table. It contains info about the number of married/unmarried people, singles, etc etc per each neighborhood and class of age. For the porpouses of this assignment, we will mainly interested in the total number of people living in each neighborhood, no matter of the marital status.
+The rows of the first table represent the boroughs of Rome, whereas the columns contain the PCI per year divided into three categories: total, Italian, foreign.  We should exploit such data by selecting the "total" column of the year 2015. As for the second one, it is a way more complicated table. It contains info about the number of married/unmarried people, singles, etc etc per each neighborhood and class of age. For the purposes of this assignment, we will mainly interested in the total number of people living in each neighborhood, no matter of the marital status.
 
 As for Foursquare, we will mainly make use of two GET methods:  
 `https://api.foursquare.com/v2/venues/explore` and `https://api.foursquare.com/v2/venues/search`.  
@@ -60,13 +60,13 @@ in order to download all the checked-in venues nearby the selected neighborhoods
 - 'Parking'.
 
 The aforementioned data will be then merged into two `pandas` DataFrame, the first one listing geographical\demographic info about each neighborhood and the second one grouping all the retrieved venues from Foursquare.  
-At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes.  
+At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to tackle the problem have been gathered and loaded into the working dataframes.  
 
 
 ## § Methodology
 
 
-The boroughs of Rome that have preliminarly selected were the ones whose Per-Capita Income (PCI) was above a fixed threshold, which has been set to 27,500€ per year. The rationale behind such a value is based on the following computation: supposing that a customer is willing to pay around 100.00€ for a meal in a high level restarant, and assuming that such an amount is less than the 5% of his salary, then the target should earn more than 2,000€ per month, 13 months per year, yielding an annual income of 26,000€ on average. An extra of 1,500€ has been added to enlarge the confidence interval.  
+The boroughs of Rome that have preliminarily selected were the ones whose Per-Capita Income (PCI) was above a fixed threshold, which has been set to 27,500€ per year. The rationale behind such a value is based on the following computation: supposing that a customer is willing to pay around 100.00€ for a meal in a high level restaurant, and assuming that such an amount is less than the 5% of his salary, then the target should earn more than 2,000€ per month, 13 months per year, yielding an annual income of 26,000€ on average. An extra of 1,500€ has been added to enlarge the confidence interval.  
 Once the boroughs excluded by the previous filter have been dropped from the dataframe, the "Zone" within the selected "Municipi" have been taken under consideration. In particular, the list of neighborhoods has been shortened to just those "Zone" that are located within the GRA Junction, the reason being the better connection.  
 Finally, an analysis of population density by neighborhood has yielded the list of candidate neighborhoods. The threshold value chosen to filter the neighborhoods out has been set to 1,000 inhabitants per km2. The scope was to target as many people as possible.  
 A this stage, a clustering algorithm has been considered in order to get rid of uncorrelated neighborhoods. Such a relation was based on both the number and the category of the venues located in each "Zona". Since the goal was to clean data out of noise, the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` has been applied to the one-hot encoded dataframe of all such venues, that have been previously retrieved via the Foursquare API. The choice of the DBSCAN algorithm relies on its ability to detect efficiently outliers.  
@@ -100,7 +100,7 @@ Then Restaurants in each "Zona" have been counted, and their density computed. T
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)   
 
-As a matter of fact, it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage the marketing of the other businesses and increase competitiveness (check the article by Karen Spaeder in the "References" section). Hence, it is crucial to pick a neighborhoods where it is more likely to count the expected number of restaurants.  
+As a matter of fact, it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to leverage the marketing of the other businesses and increase competitiveness (check the article by Karen Spaeder in the "References" section). Hence, it is crucial to pick a neighborhoods where it is more likely to count the expected number of restaurants.  
 
 Finally, the weighted average of distances of TPL from the centroids of the neighborhoods is computed.  
 The chart below describes the relevant data about the transportation system.  
@@ -127,7 +127,7 @@ The following guidelines will yield the optimal choice:
 If the first of the above guidelines addresses the question of being as close to the competitors as possible, the second of them hints at the candidate neighborhood as a node of the transportation network, based on the assumption that the more connected it is, the better. The last guideline is meant to locate the new restaurant next to any TPL.  
 
 Finally, a couple of remarks.  
-The analysis that we have conducted is very far from being complete and exhaustive. For instance, the limitations of the Foursquare API had the negative conseguence of restricting the number of venues that we could fetch.  
+The analysis that we have conducted is very far from being complete and exhaustive. For instance, the limitations of the Foursquare API had the negative consequence of restricting the number of venues that we could fetch.  
 Moreover, the information about population and income are not updated, hence they are susceptible to changes that can affect the results. As an example, data about PCI are dated 2015. 
 One can clearly overcome such obstacles by appealing to other API and by looking at other economic/financial data. We defer similar investigations for they would go beyond the scope of such analysis.  
 
