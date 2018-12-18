@@ -125,4 +125,4 @@ Then, the following guidelines have been followed:
 
 The decision of looking at the interquartile range for the restaurants density instead of the first quartile stems from the following consideration ([here](https://www.entrepreneur.com/article/73784) a reference): it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage competitors' marketing and increase competitiveness.
 
-Finally, the selected neighborhood is "Zona Prati".
+The resulting neighborhood is "Zona Prati".
