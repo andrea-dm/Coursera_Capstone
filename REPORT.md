@@ -100,7 +100,16 @@ The interquartile range has been also calculated for later use.
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
 
 **Step 6 -**  
-Data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and a weight has been assigned to each category, based on the results of a certain investigation that has been earlier conducted, as well as on client's preferences.  
+Data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and a weight has been assigned to each category. Based upon the impact on the transportation system that traffic jams usually have in Rome, the weight of metro and tram stations has been chosen to be heavier than both bus stops and parking. Further characteristics have been taken into consideration in the weights assignment such as the speed of the vehicles.  
 The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed.  
 
-![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)
+![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)  
+
+
+
+## § Results
+
+
+The following table is the result of the above wrangling process:  
+
+![Candidate Neighborhoods](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/candidate_neighborhoods.jpg) 
