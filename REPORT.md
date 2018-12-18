@@ -58,42 +58,49 @@ in order to download all the checked-in venues nearby the selected neighborhoods
 - 'Tram Station';
 - 'Parking'.
 
-The aforementioned data will be then merged into two `pandas` DataFrame, the first one listing geographical\demographic info about each neighborhood and the second one grouping all the retrieved venues from Foursquare. 
+The aforementioned data will be then merged into two `pandas` DataFrame, the first one listing geographical\demographic info about each neighborhood and the second one grouping all the retrieved venues from Foursquare.  
+At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes.
 
 
 ## § Methodology
 
 
-At this point, we are completely aware of the intentions of our client, and the data needed to try a first attempt to takle the problem have been gathered and loaded into the working dataframes. Now is time to start the wrangling process.  
-First of all, we select only the boroughs of Rome where the Per-Capita Income (PCI) is above a fixed threshold, which has been previously set to 27.500 EUR per year. The following map shows the "Municipi" by PCI.
+**Step 1**
+We have selected only the boroughs of Rome where the Per-Capita Income (PCI) was above a fixed threshold, which has been previously set to 27,500€ per year. The following map shows the "Municipi" by PCI.  
+
 ![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
 
-Next, we consider all the neighborhoods within the boroughs resulting from the previous selection. In particulat, we are restricting ourselves to those "Zone" that are located within the GRA Junction.  
-Furthermore, an analysis of population density by neighborhood yields the list of candidate "Zone", which are represented in the following map.
+**Step 2**
+We have dropped all the neighborhoods within those boroughs excluded by the previous selection. In particulat, we have restricted ourselves to just the "Zone" that are located within the GRA Junction.  
+Next, an analysis of population density by neighborhood has yielded the list of candidate "Zone", which has been plotted in the following map.  
 
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_density.jpg)  
 
-The threshold value chosen to filter the neighborhoods out is 1000 inhabitants per km2.  
+The threshold value chosen to filter the neighborhoods out was one thousand inhabitants per km2.  
 
-We are ready to clean out the noise.  
-To do so, we run the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` on the one-hot encoded dataframe of all the venues retrieved via the Foursquare API.  
+**Step 3**
+The resulting data has been cleaned of noise via the DBSCAN algorithm, which has been applied with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` on the one-hot encoded dataframe of all the venues previously retrieved from Foursquare.  
 
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
 
-Finally, we inspect the core cluster.  
-The analysis is based on the following two considerations:
+The output cluster has been inspected.  
+The analysis was based on the following two considerations:
 - Opera Houses, Concert Halls and Theaters are generally attended by somewhat aristocratic/wealthy people;
 - it is a generally accepted principle that a new business must be located as close to its competitors as it can be.  
 
-So, we first select neighborhoods where at least one theater is located.
+**Step 4**
+The neighborhoods where at least one theater is located have been selected.  
 
 ![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg)  
 
-Next, we count restaurants in each "Zona" and compute the density. The interquartile range is calculated for later use.
+**Step 5** 
+Restaurants in each "Zona" have been counted, and their density computed.  
+The interquartile range has been also calculated for later use.  
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
 
-Final step: transportation system. At this stage, data about bus stops, metro stations, tram stations and parking are retrieved via the Foursquare API. Then, a weight has been assigned to each category, based on the results of a certain investigation that has been earlier conducted, as well as on client's preferences. 
-The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed. 
+**Step 6** 
+Data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and a weight has been assigned to each category, based on the results of a certain investigation that has been earlier conducted, as well as on client's preferences.  
+The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed.  
 
 ![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)
