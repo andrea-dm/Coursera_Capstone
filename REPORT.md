@@ -65,64 +65,70 @@ At this point, we are completely aware of the intentions of our client, and the 
 ## § Methodology
 
 
-**Step 1 -**  
-We have selected only the boroughs of Rome where the Per-Capita Income (PCI) was above a fixed threshold, which has been previously set to 27,500€ per year. The following map shows the "Municipi" by PCI.  
-
-![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
-
-**Step 2 -**  
-We have dropped all the neighborhoods within those boroughs excluded by the previous selection. In particulat, we have restricted ourselves to just the "Zone" that are located within the GRA Junction.  
-Next, an analysis of population density by neighborhood has yielded the list of candidate "Zone", which has been plotted in the following map.  
-
-![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_density.jpg)  
-
-The threshold value chosen to filter the neighborhoods out was one thousand inhabitants per km2.  
-
-**Step 3 -**  
-The resulting data has been cleaned of noise via the DBSCAN algorithm, which has been applied with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` on the one-hot encoded dataframe of all the venues previously retrieved from Foursquare.  
-
-![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
-
-The output cluster has been inspected.  
-The analysis was based on the following two considerations:
-- Opera Houses, Concert Halls and Theaters are generally attended by somewhat aristocratic/wealthy people;
-- it is a generally accepted principle that a new business must be located as close to its competitors as it can be.  
-
-**Step 4 -**  
-The neighborhoods where at least one theater is located have been selected.  
-
-![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg)  
-
-**Step 5 -**  
-Restaurants in each "Zona" have been counted, and their density computed.  
-The interquartile range has been also calculated for later use.  
-
-![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
-
-**Step 6 -**  
-Data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and a weight has been assigned to each category. Based upon the impact on the transportation system that traffic jams usually have in Rome, the weight of metro and tram stations has been chosen to be heavier than both bus stops and parking. Further characteristics have been taken into consideration in the weights assignment such as the speed of the vehicles.  
-The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed.  
-
-![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)  
+The boroughs of Rome that have preliminarly selected were the ones whose Per-Capita Income (PCI) was above a fixed threshold, which has been set to 27,500€ per year. The rationale behind such a value is based on the following computation: supposing that a customer is willing to pay around 100.00€ for a meal in a high level restarant, and assuming that such an amount is less than the 5% of his salary, then the target should earn more than 2,000€ per month, 13 months per year, yielding an annual income of 26,000€ on average. An extra of 1,500€ has been added to enlarge the confidence interval.  
+Once the boroughs excluded by the previous filter have been dropped from the dataframe, the "Zone" within the selected "Municipi" have been taken under consideration. In particular, the list of neighborhoods has been shortened to just those "Zone" that are located within the GRA Junction, the reason being the better connection.  
+Finally, an analysis of population density by neighborhood has yielded the list of candidate neighborhoods. The threshold value chosen to filter the neighborhoods out has been set to 1,000 inhabitants per km2. The scope was to target as many people as possible.  
+A this stage, a clustering algorithm has been considered in order to get rid of uncorrelated neighborhoods. Such a relation was based on both the number and the category of the venues located in each "Zona". Since the goal was to clean data out of noise, the DBSCAN algorithm with parameters `eps=1`, `min_samples=5`, `metric='cityblock'` has been applied to the one-hot encoded dataframe of all such venues, that have been previously retrieved via the Foursquare API. The choice of the DBSCAN algorithm relies on its ability to detect efficiently outliers.  
+The cleaned dataset has been further filtered out by excluding the neighborhoods where at no Opera Houses, Concert Halls and Theaters are located. In fact, such venues are generally attended by somewhat aristocratic/wealthy people, who are precisely the primary target.  
+Next, the number of restaurants is counted for each neighborhood, non-Italian cuisine ignored.  
+Finally, data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and the only the "Zone" where such infrastructures are located have been selected. Moreover, a weight has been assigned to each category of those. Based upon the impact on the transportation system that traffic jams usually have in Rome, the weight of metro and tram stations has been chosen to be heavier than both bus stops and parking. Further characteristics have been taken into consideration in the weights assignment such as the speed of the vehicles.  
 
 
 
 ## § Results
 
 
-The following table is the result of the above wrangling process:  
+The following map shows the "Municipi" by PCI:  
+
+![Municipi and PCI](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/municipi_and_pci.jpg)  
+
+
+The darker the purple, the higher the average income. The below map shows instead the population density per "Zona".  
+
+![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_density.jpg)  
+
+The results of the DBSCAN algorithm have been plotted on the following map of Rome  
+
+![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
+
+where the yellow points represent the outliers.  
+Considering venues such as Opera Houses, Concert Halls and Theaters has yielded this chart:  
+
+![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg) 
+
+Then Restaurants in each "Zona" have been counted, and their density computed. The interquartile range has been also calculated in order to select the optimal neighborhood.  
+
+![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)   
+
+As a matter of fact, it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage the marketing of the other businesses and increase competitiveness ([here](https://www.entrepreneur.com/article/73784) a reference). Hence, it is crucial to pick a neighborhoods where it is more likely to count the expected number of restaurants.  
+
+Finally, the weighted average of distances of TPL from the centroids of the neighborhoods is computed.  
+The chart below describes the relevant data about the transportation system.  
+
+![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)  
+
+Putting everything together, we get the following table:
 
 ![Candidate Neighborhoods](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/candidate_neighborhoods.jpg)  
 
-In order to infer the optimal neighborhood, only the columns `Restaurants per km2`, `TPL per km2` and `Average Distance` have been examined. In particular, they have been cut in quartiles.  
+
+## § Discussion
+
+
+In order to infer the optimal neighborhood, only the columns `Restaurants per km2`, `TPL per km2` and `Average Distance` of the above dataframe have been examined. In particular, they have been cut in quantiles.  
 
 ![Quartiles](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_quartiles.jpg)  
 
-Then, the following guidelines have been followed:
+The following guidelines will yield the optimal choice:
 - the density of restaurants per km2 should be in the interquartile range;
 - the density of TPL per km2 should be above the median;
 - the average distance from TPL should be as shortest as possible.
 
-The decision of looking at the interquartile range for the restaurants density instead of the first quartile stems from the following consideration ([here](https://www.entrepreneur.com/article/73784) a reference): it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage competitors' marketing and increase competitiveness.
+If the first of the above guidelines addresses the question of being as close to the competitors as possible, the second of them hints at the candidate neighborhood as a node of the transportation network, based on the assumption that the more connected it is, the better. The last guideline is meant to locate the new restaurant next to any TPL.  
 
-The resulting neighborhood is "Zona Prati".
+We will eventually deduce that the optimal neighborhood is "Zona Prati".
+
+
+## § Conclusion
+
+
