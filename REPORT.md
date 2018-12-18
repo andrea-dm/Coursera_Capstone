@@ -116,14 +116,13 @@ The following table is the result of the above wrangling process:
 
 In order to infer the optimal neighborhood, only the columns `Restaurants per km2`, `TPL per km2` and `Average Distance` have been examined. In particular, they have been cut in quartiles.  
 
-![Quartiles](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/candidate_quartiles.jpg)  
+![Quartiles](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_quartiles.jpg)  
 
 Then, the following guidelines have been followed:
 - the density of restaurants per km2 should be in the interquartile range;
 - the density of TPL per km2 should be above the median;
 - the average distance from TPL should be as shortest as possible.
 
-The decision of looking at the interquartile range for the restaurants density instead of the first quartile stems from the following consideration ([here](https://www.entrepreneur.com/article/73784) a reference):  
-it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage competitors' marketing and increase competitiveness.
+The decision of looking at the interquartile range for the restaurants density instead of the first quartile stems from the following consideration ([here](https://www.entrepreneur.com/article/73784) a reference): it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to levarage competitors' marketing and increase competitiveness.
 
 Finally, the selected neighborhood is "Zona Prati".
