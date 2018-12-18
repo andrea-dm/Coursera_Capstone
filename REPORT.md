@@ -88,18 +88,18 @@ The analysis was based on the following two considerations:
 - Opera Houses, Concert Halls and Theaters are generally attended by somewhat aristocratic/wealthy people;
 - it is a generally accepted principle that a new business must be located as close to its competitors as it can be.  
 
-**Step -**  
+**Step 4 -**  
 The neighborhoods where at least one theater is located have been selected.  
 
 ![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg)  
 
-**Step -**  
+**Step 5 -**  
 Restaurants in each "Zona" have been counted, and their density computed.  
 The interquartile range has been also calculated for later use.  
 
 ![Zone_and_restaurants](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_restaurants.jpg)  
 
-**Step -**  
+**Step 6 -**  
 Data about bus stops, metro stations, tram stations and parking have been retrieved via the Foursquare API, and a weight has been assigned to each category, based on the results of a certain investigation that has been earlier conducted, as well as on client's preferences.  
 The weighted average of distances of TPL from the centroids of the neighborhoods has been then computed.  
 
