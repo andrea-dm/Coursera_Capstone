@@ -1,4 +1,4 @@
-## Luxury-Restaurants-in-Rome  
+## Luxury Restaurants in Rome  
 
 Hi, and welcome to this business case!  
 
