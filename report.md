@@ -128,7 +128,8 @@ If the first of the above guidelines addresses the question of being as close to
 
 Finally, a couple of remarks.  
 The analysis that we have conducted is very far from being complete and exhaustive. For instance, the limitations of the Foursquare API had the negative consequence of restricting the number of venues that we could fetch.  
-Moreover, the information about population and income are not updated, hence they are susceptible to changes that can affect the results. As an example, data about PCI are dated 2015. 
+Moreover, the information about population and income are not updated, hence they are susceptible to changes that might affect dramatically the results. As an example, data about PCI are dated 2015.  
+Finally, 4/5 stars hotels could be considered in the study as well, for the reason that such venues usually include high level restaurants.  
 One can clearly overcome such obstacles by appealing to other API and by looking at other economic/financial data. We defer similar investigations for they would go beyond the scope of such analysis.  
 
 
