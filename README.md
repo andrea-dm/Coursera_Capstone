@@ -10,6 +10,6 @@ Please, have a look at [the report](https://github.com/andrea-dm/Luxury-Restaura
 ---------------------------------------
 
 _The analysis that we have conducted is very far from being complete and exhaustive.  
-For instance, the limitations of the Foursquare API had the negative conseguence of restricting the number of venues that we could fetch. Plus, the information about population and income are not updated, hence they are susceptible to changes that might affect the results (e.g., data about PCI are dated 2015). Furthermore, deeper inspections can be carried out and other drivers figured out.  
-We defer similar investigations for they would go far beyond the scope of such an assignment, which has been to some extent forced to match specific requirements set by the IBM Capstone Project._
+For instance, the limitations of the Foursquare API had the negative conseguence of restricting the number of venues that we could fetch. Plus, the information about population and income are not updated, hence they are susceptible to changes that might affect the results (e.g., data about PCI are dated 2015). Furthermore, deeper inspections can be carried out and other drivers might be figured out.  
+We defer similar investigations, for they would go way beyond the scope of such an assignment, which has been to some extent forced to match specific requirements set by the IBM Capstone Project._
 
