@@ -92,7 +92,7 @@ The results of the DBSCAN algorithm have been plotted on the following map of Ro
 ![Zone_and_density](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_noise.jpg)  
 
 where the yellow points represent the outliers.  
-Considering venues such as Opera Houses, Concert Halls and Theaters has yielded this chart:  
+Considering venues such as Opera Houses, Concert Halls and Theaters has yielded the following chart, where the size of each bubble represents the area in km2 of the corresponding neighborhood:  
 
 ![Zone_and_theaters](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/neighborhoods_and_theaters.jpg) 
 
@@ -103,7 +103,7 @@ Then Restaurants in each "Zona" have been counted, and their density computed. T
 As a matter of fact, it is a generally accepted principle that a new business must be located as close to its competitors as it can be, in order to leverage the marketing of the other businesses and increase competitiveness (check the article by Karen Spaeder in the "References" section). Hence, it is crucial to pick a neighborhoods where it is more likely to count the expected number of restaurants.  
 
 Finally, the weighted average of distances of TPL from the centroids of the neighborhoods is computed.  
-The chart below describes the relevant data about the transportation system.  
+The chart below describes the relevant data about the transportation system. In particular, the size of each bubble represents the number of bus stops, metro/tram stations and parking which are located nearby the corresponding neighborhood.   
 
 ![Zone_and_tpl](https://github.com/andrea-dm/Coursera_Capstone/blob/master/resources/zone_and_tpl.jpg)  
 
