@@ -135,7 +135,7 @@ One can clearly overcome such obstacles by appealing to other API and by looking
 ## § Conclusion
 
 The result of the above analysis is clear: the optimal neighborhood is "Zona Prati".  
-Even if the data we got have been proved to be somewhat limited, the methods and the techniques applied mathematical-based, hence solid. This makes the result valid and reliable.
+Even if the data we got have been proved to be somewhat limited, the employed methods and techniques are mathematical-based, hence solid. This makes the result valid and reliable.
 
 
 ## § References
