@@ -11,5 +11,5 @@ Please, have a look at [the report](https://github.com/andrea-dm/Luxury-Restaura
 
 _The analysis that we have conducted is very far from being complete and exhaustive.  
 For instance, 4/5-stars hotels could be considered in the study as well, for the reason that such venues come along with high level restaurants most of the times. Plus, the information about population and income are not updated, hence they are susceptible to changes that might dramatically affect the results (e.g., data about PCI are dated 2015). Definitively, deeper inspections could be carried out and other drivers could be figured out.  
-We defer similar investigations, for they would go way beyond the scope of such an assignment, which has been to some extent forced to match specific requirements set by the IBM Capstone Project such as the Foursquare API, whose limitations had the negative conseguence of restricting the number of venues that we could fetch._
+We defer similar investigations, for they would go way beyond the scope of such a notebook, which has been to some extent forced to match some specific requirements set by the IBM Capstone Project such as the Foursquare API, whose limitations had the negative conseguence of restricting the number of venues that we could fetch._
 
