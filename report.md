@@ -8,7 +8,7 @@ We recall that "Municipio" is the Italian for borough, and "Zona" is the Italian
 ## § Introduction/Business Problem
 
 
-Rome is a worldwide recognized cultural center, and one can find many luxury restaurants there. An investor might then be interested in funding an already exiting restaurant, or he could even open one by his own.  
+Rome is a worldwide recognized cultural center, and one can find many luxury restaurants there. An investor might then be interested in funding an already exiting restaurant, or he could even think to open a new one on his own.  
 It is then important to know which is the optimal neighborhood in Rome where to find/open a luxury restaurant to invest in.
 
 Hence, we are going to tackle the following problem:
